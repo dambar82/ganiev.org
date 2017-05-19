@@ -25,6 +25,7 @@ Disallow: /dictionary/default/search
 Disallow: /ru/dictionary/default/search
 Disallow: /tt/dictionary/default/search
 
+
 User-agent: *
 Disallow: /?
 Disallow: /ru/?
