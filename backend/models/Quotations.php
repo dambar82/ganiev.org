@@ -7,8 +7,9 @@ use Yii;
 /**
  * This is the model class for table "quotations".
  *
- * @property integer $id
+ * @property int $id
  * @property string $content
+ * @property int $lang_id
  */
 class Quotations extends \yii\db\ActiveRecord
 {
@@ -27,6 +28,7 @@ class Quotations extends \yii\db\ActiveRecord
     {
         return [
             [['content'], 'string'],
+            [['lang_id'], 'integer'],
         ];
     }
 
@@ -37,7 +39,8 @@ class Quotations extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'content' => 'Цитата',
+            'content' => 'Content',
+            'lang_id' => 'Lang ID',
         ];
     }
 }

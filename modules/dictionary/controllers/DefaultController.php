@@ -12,6 +12,7 @@ use app\backend\models\Quotations;
 use app\helpers\admin\AdminHelper;
 use app\models\Lang;
 use app\models\Seo;
+use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use Yii;
@@ -191,14 +192,13 @@ class DefaultController extends Controller
     {
         $result = '';
         $reducto = true;
+        $llang = Lang::getCurrent();
 
-        $random_count = Quotations::find()->count();
-        $random_result = false;
-
-        if ($random_count > 0) {
-            $random_index = rand(1, $random_count);
-            $random_result = Quotations::findOne($random_index);
-        }
+        $random_result = Quotations::find()
+            ->where(['lang_id' => $llang->id])
+            ->orderBy(new Expression('rand()'))
+            ->limit(1)
+            ->one();
 
         if (!isset($word)) {
             throw new NotFoundHttpException();
