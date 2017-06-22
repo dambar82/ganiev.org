@@ -28,14 +28,13 @@ class DefaultController extends Controller
         $error_message = '';
         $result = '';
         $reducto = false;
+        $llang = Lang::getCurrent();
 
-        $random_count = Quotations::find()->count();
-        $random_result = false;
-
-        if ($random_count > 0) {
-            $random_index = rand(1, $random_count);
-            $random_result = Quotations::findOne($random_index);
-        }
+        $random_result = Quotations::find()
+            ->where(['lang_id' => $llang->id])
+            ->orderBy(new Expression('rand()'))
+            ->limit(1)
+            ->one();
 
         Seo::setSeo('mainpage', Lang::getCurrent()->id, '');
 
