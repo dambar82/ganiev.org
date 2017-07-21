@@ -101,7 +101,7 @@ class DefaultController extends Controller
 
     public function actionSlug()
     {
-        $words = DictWord::find()->where(['is','slug', NULL])->all();
+        $words = DictWord::find()->where(['like','word', 'ё'])->all();
 
         foreach ($words as $word) {
             $word->slug = SlugHelper::latin($word->word);
