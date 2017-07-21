@@ -105,7 +105,7 @@ class DefaultController extends Controller
 echo AdminHelper::pre($words);
         foreach ($words as $word) {
             $word->slug = SlugHelper::latin($word->word);
-            $word->save();
+            $word->save(false);
         }
     }
 }
