@@ -102,7 +102,7 @@ class DefaultController extends Controller
     public function actionSlug()
     {
         $words = DictWord::find()->where(['like','word', 'ё'])->all();
-
+echo AdminHelper::pre($words);
         foreach ($words as $word) {
             $word->slug = SlugHelper::latin($word->word);
             $word->save();
