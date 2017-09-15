@@ -108,7 +108,7 @@ AppAsset::register($this);
             <div class="second-footer">
                 <div class="inside-footer-cont">
                     <div class="block-izdat">
-                        <p>© <?=Yii::t('app','ТАТАРСКОЕ ДЕТСКОЕ ИЗДАТЕЛЬСТВО')?></p>
+                        <p><a href="http://tdpress.ru/" target="_blank"><img src="/img/tdi-logo_without-bg.png" alt="" class="img-responsive" style="max-width: 220px;"></a></p>
                     </div>
                 </div>
             </div>
