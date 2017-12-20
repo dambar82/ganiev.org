@@ -9,6 +9,9 @@
 namespace app\controllers;
 
 use app\backend\models\DictDate;
+use app\backend\models\DictExamples;
+use app\backend\models\DictLinks;
+use app\backend\models\DictMeaning;
 use app\backend\models\DictWord;
 use app\helpers\admin\AdminHelper;
 use yii\helpers\Url;
@@ -19,7 +22,61 @@ use yii\web\Response;
 
 class ApiController extends Controller
 {
+
     protected $validToken = '';
+
+    public function actionSearch()
+    {
+        $this->validToken = md5(md5(Yii::$app->params['apitoken']));
+
+        $request = Yii::$app->request;
+        $authHeader = $request->getHeaders()->get('Authorization');
+
+        if ($authHeader !== null && preg_match("/^Token\\s+(.*?)$/", $authHeader, $matches)) {
+            if (md5($matches[1]) != $this->validToken) {
+                Yii::$app->response->format = Response::FORMAT_HTML;
+                throw new NotFoundHttpException('Page not found');
+            }
+        } else {
+            Yii::$app->response->format = Response::FORMAT_HTML;
+            throw new NotFoundHttpException('Page not found');
+        }
+
+        $search = Yii::$app->request->post('search');
+
+        if (!empty($search)) {
+            if (($word = DictWord::findOne(['word' => $search])) != NULL) {
+
+                $words = DictWord::findAll(['slug' => $word->slug]);
+                $result = [];
+
+                foreach ($words as $key => $thisword) {
+                    $links = DictLinks::findAll(['word_id' => $thisword->id]);
+                    $meanings = DictMeaning::findAll(['word_id' => $thisword->id]);
+
+                    $result[$key]['word'] = $thisword;
+                    $result[$key]['meaning'] = $meanings;
+                    $result[$key]['links'] = $links;
+
+                    foreach ($meanings as $mean_key => $mean_value) {
+                        $example = DictExamples::findAll(['word_id' => $thisword->id,'meaning_id' => $mean_value->id]);
+                        $result[$key]['examples'][$mean_key] = ($example ? $example : NULL);
+                        if ($example) {
+                            foreach ($example as $exa) {
+                                /** @var $exa DictExamples */
+                                $metaKeywords[] = trim($exa->rus_value);
+                            }
+                        }
+                    }
+                }
+                return json_encode($result);
+            }
+        }
+
+        throw new NotFoundHttpException('Page not found');
+
+    }
+
 
     public function actionUpdate() // проверить обновления
     {
