@@ -44,6 +44,7 @@ class ApiController extends Controller
 
         $search = Yii::$app->request->post('search');
 
+
         if (!empty($search)) {
             if (($word = DictWord::findOne(['word' => $search])) != NULL) {
 
@@ -69,7 +70,7 @@ class ApiController extends Controller
                         }
                     }
                 }
-                return json_encode($result);
+                return $result;
             }
         }
 
