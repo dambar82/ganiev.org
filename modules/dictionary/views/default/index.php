@@ -60,7 +60,7 @@ $url = Yii::$app->urlManager->createUrl('/dictionary/default/search', array('lan
     <div id="search_result">
         <?php
         if (!empty($message)) {
-            echo '<div class="alert alert-danger" style="position:relative; background-color: #f2dede;color: #a94442;border-color: #ebccd1;border: 1px solid transparent;">'.$message.'</div>';
+            echo '<div class="alert alert-danger" style="z-index:1; position:relative; background-color: #f2dede;color: #a94442;border-color: #ebccd1;border: 1px solid transparent;">'.$message.'</div>';
         }
 
         if (!empty($results)) {
