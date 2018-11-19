@@ -14,6 +14,7 @@ use app\models\Lang;
 use app\models\Seo;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 use yii\web\Controller;
 use Yii;
 use yii\web\NotFoundHttpException;
@@ -184,7 +185,16 @@ class DefaultController extends Controller
             }
         }
 
-        throw new NotFoundHttpException();
+        return $this->render('@app/modules/dictionary/views/default/index',[
+            'message' => 'Слово отсутствует в словаре',
+            'results' => null,
+            'word' => $search,
+            'random_result' => null,
+            'reducto' => false,
+            'mobile' => true,
+        ]);
+
+        //throw new NotFoundHttpException();
     }
 
     public function actionWords($word = NULL)
