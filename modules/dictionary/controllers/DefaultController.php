@@ -39,87 +39,6 @@ class DefaultController extends Controller
 
         Seo::setSeo('mainpage', Lang::getCurrent()->id, '');
 
-//        if (((Yii::$app->request->isPjax)) | (!empty(Yii::$app->request->post('search')))){
-//
-//            $search = Yii::$app->request->post('search');
-//            $words = DictWord::findAll(['word' => $search]);
-//            if (count($words) == 0) {
-//                $error_message = Yii::t('app','К сожалению, по вашему запросу ничего не найдено');
-//                return $this->renderAjax('index',[
-//                    'message' => $error_message,
-//                    'word' => $search,
-//                    'random_result' => $random_result,
-//                    'reducto' => $reducto,
-//                    'mobile' => false,
-//                ]);
-//            }
-//            else {
-//                $reducto = true;
-//
-//                foreach ($words as $key => $word) {
-//                    $links = DictLinks::findAll(['word_id' => $word->id]);
-//                    $meanings = DictMeaning::findAll(['word_id' => $word->id]);
-//
-//                    $result[$key]['word'] = $word;
-//                    $result[$key]['meaning'] = $meanings;
-//                    $result[$key]['links'] = $links;
-//
-//                    foreach ($meanings as $mean_key => $mean_value) {
-//                        $example = DictExamples::findAll(['word_id' => $word->id,'meaning_id' => $mean_value->id]);
-//                        $result[$key]['examples'][$mean_key] = ($example ? $example : NULL);
-//                    }
-//                }
-//
-//                return $this->render('index',[
-//                    'message' => $error_message,
-//                    'results' => $result,
-//                    'word' => $search,
-//                    'random_result' => $random_result,
-//                    'reducto' => $reducto,
-//                    'mobile' => false,
-//                ]);
-//            }
-//        }
-//
-//        if (Yii::$app->request->isPost) {
-//            $reducto = true;
-//
-//            if (($id = Yii::$app->request->get('id')) == NULL) {
-//                return $this->render('index',[
-//                    'message' => $error_message,
-//                    'results' => $result,
-//                    'random_result' => $random_result,
-//                    'reducto' => $reducto,
-//                    'mobile' => false,
-//                ]);
-//            }
-//
-//            $words = DictWord::findAll(['id' => $id]);
-//
-//            foreach ($words as $key => $word) {
-//                $links = DictLinks::findAll(['word_id' => $word->id]);
-//                $meanings = DictMeaning::findAll(['word_id' => $word->id]);
-//
-//                $result[$key]['word'] = $word;
-//                $result[$key]['meaning'] = $meanings;
-//                $result[$key]['links'] = $links;
-//
-//                foreach ($meanings as $mean_key => $mean_value) {
-//                    $example = DictExamples::findAll(['word_id' => $word->id,'meaning_id' => $mean_value->id]);
-//                    $result[$key]['examples'][$mean_key] = ($example ? $example : NULL);
-//                }
-//            }
-//
-//            return $this->render('index',[
-//                'message' => $error_message,
-//                'results' => $result,
-//                'word' => ($words[0]->word ? $words[0]->word : ''),
-//                'random_result' => $random_result,
-//                'reducto' => $reducto,
-//                'mobile' => false,
-//            ]);
-//        }
-
         return $this->render('index',[
             'message' => $error_message,
             'results' => $result,
@@ -136,7 +55,7 @@ class DefaultController extends Controller
         }
         $search = preg_replace("/[^а-яё]+/msiu", '', $search);
 
-        $words = DictWord::find()->where(['like', 'word', $search.'%', false])->groupBy('word')->all();
+        $words = DictWord::find()->where(['like', 'word', mb_strtolower($search).'%', false])->groupBy('word')->all();
 
         if (count($words) > 0) {
             $results = ArrayHelper::map($words,'id','word');
@@ -178,7 +97,7 @@ class DefaultController extends Controller
         if (Yii::$app->request->isPost) {
             $search = Yii::$app->request->post('search');
             if (!empty($search)) {
-                if (($word = DictWord::findOne(['word' => $search])) != NULL) {
+                if (($word = DictWord::findOne(['word' => mb_strtolower($search)])) != NULL) {
                     $url = Yii::$app->urlManager->createUrl('/words/'.$word->slug, array('lang_id'=>Lang::getCurrent()->id));
                     return $this->redirect($url);
                 }
@@ -246,6 +165,7 @@ class DefaultController extends Controller
             'random_result' => $random_result,
             'reducto' => $reducto,
             'mobile' => false,
+            'message' => null
         ]);
     }
 

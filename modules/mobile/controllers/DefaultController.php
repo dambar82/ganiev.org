@@ -33,13 +33,14 @@ class DefaultController extends Controller
 
         if (((Yii::$app->request->isPjax)) | (!empty(Yii::$app->request->post('search')))){
 
-            $search = Yii::$app->request->post('search');
+            $search = mb_strtolower(Yii::$app->request->post('search'));
             $words = DictWord::findAll(['word' => $search]);
             if (count($words) == 0) {
                 $error_message = Yii::t('app','К сожалению, по вашему запросу ничего не найдено');
                 return $this->renderAjax('@app/modules/dictionary/views/default/index',[
                     'message' => $error_message,
                     'word' => $search,
+                    'results' => null,
                     'random_result' => $random_result,
                     'reducto' => $reducto,
                     'mobile' => true,
