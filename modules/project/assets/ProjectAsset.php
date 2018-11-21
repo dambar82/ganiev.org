@@ -15,9 +15,10 @@ class ProjectAsset extends AssetBundle
     public $sourcePath = '@projectModule/assets';
 
     public $css = [
-        "css/site.css"
+        "css/project.css"
     ];
     public $js = [
+        'js/project.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
