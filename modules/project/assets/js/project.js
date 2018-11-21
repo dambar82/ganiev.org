@@ -1,5 +1,6 @@
 (function() {
-    var audio = [];
+    var audio = [],
+        img;
 
     $(document).ready(function() {
         audioSrc.forEach(function(src, i) {
@@ -7,6 +8,8 @@
             aud.load();
             audio[i] = aud;
         });
+
+        img = $(".card--img");
 
         $(".card--sound").click(function() {
             if (audio.length > 0) {
@@ -16,6 +19,10 @@
     });
 
     function playSound(i) {
+        if (i == 0) {
+            img.addClass("xsize");
+        }
+
         if (audio[i] == undefined) {
             i++;
             if (i < audio.length) {
