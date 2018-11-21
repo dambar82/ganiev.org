@@ -80,11 +80,9 @@ body {
         font-weight: 600;
         text-transform: uppercase;
         border: 2px solid #51c153;
-        padding: 10px 15px;
+        padding: 10px 35px;
         color: #fff;
         border-radius: 12px;
-        width: 100%;
-        max-width: 256px;
         text-decoration: none;
 
         background: rgba(133, 251, 184, 1);
@@ -93,5 +91,23 @@ body {
         background: -webkit-linear-gradient(top, rgba(133, 251, 184, 1) 0%, rgba(91, 196, 121, 1) 40%, rgba(86, 196, 104, 1) 60%, rgba(141, 220, 147, 1) 100%);
         background: -o-linear-gradient(top, rgba(133, 251, 184, 1) 0%, rgba(91, 196, 121, 1) 40%, rgba(86, 196, 104, 1) 60%, rgba(141, 220, 147, 1) 100%);
         background: -ms-linear-gradient(top, rgba(133, 251, 184, 1) 0%, rgba(91, 196, 121, 1) 40%, rgba(86, 196, 104, 1) 60%, rgba(141, 220, 147, 1) 100%);
+    }
+
+    @media all and (max-width: 767px) {
+        .card--letter {
+            font-size: 42vw;
+        }
+        .card--img {
+            margin: 4vw 0;
+            width: 58vw;
+            padding-top: 58vw;
+        }
+        .card--word {
+            font-size: 13vw;
+        }
+        .card--sound {
+            margin-top: 4vw;
+            font-size: 6vw;
+        }
     }
 }
