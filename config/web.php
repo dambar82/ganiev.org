@@ -104,6 +104,10 @@ $config = [
             'class' => 'app\modules\mobile\Module',
             'layout' => '@app/views/layouts/mobile',
         ],
+        'project' => [
+            'class' => 'app\modules\project\Module',
+            'layout' => '@app/modules/project/views/layouts/main',
+        ],
     ],
     'params' => $params,
 ];
