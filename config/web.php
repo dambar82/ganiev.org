@@ -62,6 +62,8 @@ $config = [
                 '/dictionary/default/author' => '/site/error',
                 '/dictionary/default/about' => '/site/error',
 
+                'alphabet/<id:\d+>' => 'project/default/index',
+
                 'user-management/auth/login' => 'site/error',
                 'user-management/auth/logout' => 'site/error',
 

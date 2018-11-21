@@ -26,24 +26,9 @@ use yii\widgets\Breadcrumbs;
 
 <div class="wrap">
     <div class="container-fluid">
-        <div class="view--card">
-            <div class="view--content">
-                <div class="view--row">
-                    <div class="card--letter">
-                        <span>a</span>
-                    </div>
-                    <div class="card--img">
-                        <img src="/img/main_bg.jpg" alt="" class="img-responsive">
-                    </div>
-                    <div class="card--word">
-                        <span>аю</span>
-                    </div>
-                    <a href="javascript:;" class="card--sound">Озвучить</a>
-                </div>
-            </div>
-        </div>
+
+        <?= $content ?>
     </div>
-        <!-- <?= $content ?> -->
 </div>
 
 <?php $this->endBody() ?>
