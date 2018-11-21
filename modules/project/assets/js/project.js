@@ -1,4 +1,3 @@
-var audioSrc = ["http://balasuzlek.ru/files/audio/1/9MOhWf78uUuosdD84fXpebq7kJw3tp2B.mp3", "http://balasuzlek.ru/files/audio/1/827-oCjsHejsfYx5RqEelzbIJa4MF9Wp.mp3"];
 (function() {
     var audio = [];
 
