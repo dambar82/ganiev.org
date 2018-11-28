@@ -8,6 +8,10 @@ $config = [
     'defaultRoute' => 'dictionary/default/words',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'aliases' => [
+        '@bower' => '@vendor/bower-asset',
+        '@npm'   => '@vendor/npm-asset',
+    ],
     'layout' => '@app/views/layouts/dictionary',
     'components' => [
         'assetManager' => [
