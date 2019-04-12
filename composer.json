@@ -38,6 +38,7 @@
     },
     "config": {
         "process-timeout": 1800,
+        "discard-changes": true,
         "fxp-asset": {
             "enabled": false
         }

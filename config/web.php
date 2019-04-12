@@ -15,7 +15,12 @@ $config = [
     'layout' => '@app/views/layouts/dictionary',
     'components' => [
         'assetManager' => [
-            'appendTimestamp' => true
+            'appendTimestamp' => true,
+            'bundles' => [
+                'kartik\form\ActiveFormAsset' => [
+                    'bsDependencyEnabled' => false // do not load bootstrap assets for a specific asset bundle
+                ],
+            ],
         ],
         'request' => [
             'cookieValidationKey' => 'xQXwobLIR1w4qbUsgy8tUg13_mUNlAjl',
