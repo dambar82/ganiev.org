@@ -13,7 +13,7 @@
                     [
                         'label' => 'Об авторе',
                         'icon' => 'info-circle',
-                        'url' => '#',
+                        'url' => '/backend/info/index',
                         'items' => [
                             ['label' => 'Биография', 'icon' => 'male', 'url' => ['/backend/info/update?id=1'],],
                             ['label' => 'Наследие', 'icon' => 'book', 'url' => ['/backend/info/update?id=3'],],
@@ -23,7 +23,7 @@
                     [
                         'label' => 'Циататы',
                         'icon' => 'info-circle',
-                        'url' => '#',
+                        'url' => '/backend/quotations/index',
                         'items' => [
                             ['label' => 'Добавить', 'icon' => 'plus', 'url' => ['/backend/quotations/create'],],
                             ['label' => 'Список', 'icon' => 'list', 'url' => ['/backend/quotations/index'],],
@@ -33,7 +33,7 @@
                     [
                         'label' => 'SEO',
                         'icon' => 'info-circle',
-                        'url' => '#',
+                        'url' => '/backend/seo/index',
                         'items' => [
                             ['label' => 'Sitemap', 'icon' => 'xing', 'url' => ['/backend/seo/sitemap']],
                             ['label' => 'СЕО', 'icon' => 'internet-explorer', 'url' => ['/backend/seo']],
