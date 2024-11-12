@@ -10,24 +10,17 @@ $url = Yii::$app->urlManager->createUrl('/dictionary/default/search', array('lan
 ?>
 <div id="canvas">
 
-    <?php if ($random_result) : ?>
-        <div class="views-quote hidden-xs hidden-sm">
-            <div class="views-content">
-                <div class="views-row">
-                    <div class="quote-text">
-                        <span class="field-content"><?=$random_result->content?></span>
-                    </div>
-                    <div class="quote-author">
-                        <span class="field-content"><?=Yii::t('app','Фуат Ашрафович Ганиев')?></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php endif; ?>
-
     <div id="search_block">
-        <div class="rutt-slovar">
-            <span><?=Yii::t('app','Русско-татарский словарь тат')?></span>
+        <div id='search_header'>
+            <h3>
+                ОЗВУЧЕННЫЙ
+            </h3>
+            <h1>
+            Русско-Татарский словарь
+            </h1>
+            <h1>
+            Ганиева Ф.А
+            </h1>
         </div>
         <div class="search_pol">
             <?= Html::beginForm($url, 'post', ['class' => 'search_form']); ?>
@@ -36,8 +29,7 @@ $url = Yii::$app->urlManager->createUrl('/dictionary/default/search', array('lan
                 'name' => 'search',
                 'id' => "tags",
                 'value' => isset($word) ? $word : '',
-                'options' => ['placeholder' => Yii::t('app','Введите слово')],
-                'pluginOptions' => ['highlight'=>true],
+                'options' => ['placeholder' => Yii::t('app','Введите русское слово для перевода на татарский язык')],
                 'pluginEvents' => [
                     "typeahead:select" => 'function(ev, resp) { $(".search_form").submit(); }',
                 ],
@@ -56,7 +48,71 @@ $url = Yii::$app->urlManager->createUrl('/dictionary/default/search', array('lan
             <?= Html::endForm() ?>
         </div>
     </div>
-
+    <div class='main_content'>
+        <div class='middle'>
+            <div class='main_contentHeader'>
+                <span>Фуат Ашрафович Ганиев —</span><br>
+                лидер в теории и практике создания словарей татарского языка!
+            </div>
+            <div class='thin'>
+               <div class='thin_img'>
+                    <img src="/img/muzhik.png" alt="">
+               </div>
+               <div class='thin_text'>
+               Ф. А. Ганиев – автор более 350 научных трудов, в том числе 24 монографий. В книге "Словообразование в татарском языке" (2010) ученый обобщил все свои изыскания в области татарского словообразования. Он создатель (в соавторстве) и научный редактор трехтомной академической грамматики татарского языка, редактор 135 научных изданий и словарей. Он внес большой вклад в изучение и систематизацию татарской лексикографии, интенсивно работал над составлением различных типов словарей татарского языка (толковых, переводных и т.д.). Созданные им труды, являясь бесценным научным капиталом и неоценимым достижением в тюркологии, ознаменовали целую эпоху в новейшей истории татарской лингвистической мысли.
+               </div>
+               <a class='thin_moreLink' href="/author">
+                <div class='thin_more'>
+                        Подробнее
+                        <img src="/img/more.svg" alt="">
+                </div> 
+               </a>
+            </div>
+        </div>
+        <div class='quotes'>
+            <div class='quote_active'>
+                <span>В словах отражено богатство языка.</span>
+                <img src="/img/quote.svg" alt="">
+            </div>
+        </div>
+        <div class='facts'>
+            <div class='fact'>
+                <h2 class='fact_header'>
+                    №1
+                </h2>
+                <div class='fact_text'>
+                Первый озвученный  русско-татарский онлайн-словарь
+                </div>
+            </div>
+            <div class='fact'>
+                <h2 class='fact_header'>
+                    100%
+                </h2>
+                <div class='fact_text'>
+                    Слов озвучены  профессиональным диктором
+                </div>
+            </div>
+            <div class='fact'>
+            <h2 class='fact_header'>
+                    30000
+                </h2>
+                <div class='fact_text'>
+                слов современного  русского языка
+                </div>
+            </div>
+        </div>
+        <div class='thin'>
+            <div class='thin_text'>
+            Проект русско-татарского словаря Ф.А. Ганиева — это уникальная возможность для всех, кто хочет изучать татарский язык. Основанный на многолетних исследованиях выдающегося ученого, этот онлайн-словарь содержит более 30 тысяч слов и является первым авторским озвученным словарём. Словарь доступен школьникам и всем, кто стремится к углубленному изучению языка. Мы продолжаем важное дело Фуата Ашрафовича, открывая новые горизонты в области языка и культуры.
+            </div>
+            <a class='thin_moreLink' href="/about">
+                <div class='thin_more'>
+                        Подробнее
+                        <img src="/img/more.svg" alt="">
+                </div> 
+               </a>
+        </div>
+    </div>
     <div id="search_result">
         <?php
         if (!empty($message)) {
@@ -373,54 +429,6 @@ $url = Yii::$app->urlManager->createUrl('/dictionary/default/search', array('lan
             </div>
         </div>
     <?php endif;?>
-
-    <?php if ($random_result) : ?>
-        <div class="views-quote hidden-md hidden-lg">
-            <div class="views-content">
-                <div class="views-row">
-                    <div class="quote-text">
-                        <span class="field-content"><?=$random_result->content?></span>
-                    </div>
-                    <div class="quote-author">
-                        <span class="field-content"><?=Yii::t('app','Фуат Ашрафович Ганиев')?></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php endif; ?>
-
-    <div class="views-advant">
-        <div class="views-content">
-            <div class="views-row color-1 wow slideInRight" data-wow-duration="1.5s">
-                <div class="advant-numb">
-                    <span class="field-content">1</span>
-                </div>
-                <div class="advant-title">
-                    <span class="field-content"><?=Yii::t('app','Первый озвученный русско-татарский онлайн-словарь')?></span>
-                </div>
-            </div>
-            <div class="views-row color-2 wow slideInRight" data-wow-duration="1.5s">
-                <div class="advant-numb">
-                    <span class="field-content">2</span>
-                </div>
-                <div class="advant-title">
-                    <span class="field-content"><?=Yii::t('app','Содержит более 30 000 слов современного русского языка')?></span>
-                </div>
-            </div>
-            <div class="views-row color-3 wow slideInRight" data-wow-duration="1.5s">
-                <div class="advant-numb">
-                    <span class="field-content">3</span>
-                </div>
-                <div class="advant-title">
-                    <span class="field-content"><?=Yii::t('app','Слова  озвучены профессиональным диктором')?></span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="block-text">
-        <p><?=Yii::t('app','Перевод слов с русского на татарский язык').'.'?></p>
-    </div>
 
 </div>
 <?php

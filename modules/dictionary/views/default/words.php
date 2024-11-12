@@ -15,21 +15,6 @@ $url = Yii::$app->urlManager->createUrl('/search', array('lang_id'=>Lang::getCur
 ?>
 <div id="canvas">
 
-    <?php if ($random_result) : ?>
-        <div class="views-quote hidden-xs hidden-sm">
-            <div class="views-content">
-                <div class="views-row">
-                    <div class="quote-text">
-                        <span class="field-content"><?=$random_result->content?></span>
-                    </div>
-                    <div class="quote-author">
-                        <span class="field-content"><?=Yii::t('app','Фуат Ашрафович Ганиев')?></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php endif; ?>
-
     <div id="search_block">
         <div class="rutt-slovar">
             <span><?=Yii::t('app','Русско-татарский словарь тат')?></span>
@@ -406,21 +391,6 @@ $url = Yii::$app->urlManager->createUrl('/search', array('lang_id'=>Lang::getCur
             </div>
         </div>
     <?php endif;?>
-
-    <?php if ($random_result) : ?>
-        <div class="views-quote hidden-md hidden-lg">
-            <div class="views-content">
-                <div class="views-row">
-                    <div class="quote-text">
-                        <span class="field-content"><?=$random_result->content?></span>
-                    </div>
-                    <div class="quote-author">
-                        <span class="field-content"><?=Yii::t('app','Фуат Ашрафович Ганиев')?></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    <?php endif; ?>
 
     <div class="views-advant">
         <div class="views-content">
