@@ -19,6 +19,17 @@ $url = Yii::$app->urlManager->createUrl('/search', array('lang_id'=>Lang::getCur
         <div class="rutt-slovar">
             <span><?=Yii::t('app','Русско-татарский словарь тат')?></span>
         </div>
+        <div id='search_header'>
+            <h3>
+                ОЗВУЧЕННЫЙ
+            </h3>
+            <h1>
+            Русско-Татарский словарь
+            </h1>
+            <h1>
+            Ганиева Ф.А
+            </h1>
+        </div>
         <div class="search_pol">
             <?= Html::beginForm($url, 'post', ['class' => 'search_form']); ?>
 
