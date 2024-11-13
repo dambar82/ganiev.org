@@ -15,6 +15,44 @@ body {
     width: 80%;
 }
 
+.fixed-menu {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #019303;
+    padding: 24px 67px;
+    border-radius: 80px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 100; /* Поверх остальных элементов */
+}
+
+.fixed-menu ul {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.fixed-menu_active {
+    border: 2px solid #F3F9FF;
+    border-radius: 30px;
+    padding: 5px 10px;
+}
+
+.fixed-menu li {
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.fixed-menu a {
+    text-decoration: none;
+    color: #F3F9FF;
+    text-transform: uppercase;
+}
+
+
 .wrap {
     min-height: 100%;
     padding-bottom: 95px;
@@ -148,7 +186,7 @@ h1 {
 /*  Content body
 ----------------------*/
 
-.search-bg {
+/* .search-bg {
     position: absolute;
     top: 0;
     left: 0;
@@ -161,7 +199,7 @@ h1 {
     -moz-opacity: 0.5;
     -khtml-opacity: 0.5;
     opacity: 0.5;
-}
+} */
 @media all and (max-width: 999px) {
     .content-body {
         position: initial;
@@ -364,6 +402,12 @@ h1 {
     -moz-border-radius: 8px;
     border-radius: 100px;
 }
+
+.search_form .form_control:focus {
+    box-shadow: none !important;
+    border-color: #1D351E !important;
+}
+
 .search_form .search_but {
     position: absolute;
     z-index: 15;
@@ -460,18 +504,12 @@ h1 {
     position: relative;
     font-size: 16px;
     padding-right: 45px;
-    margin-top: 15px;
+    margin-top: 80px;
 }
 .searchingWord {
-    font-size: 21pt;
-    clear: both;
-    display: block;
-    margin-bottom: 10px;
-    left: 15px;
-    position: relative;
 }
 .accent {
-    color: #ea1414;
+    color: #019303;
 }
 .img_but {
 
@@ -544,19 +582,12 @@ h1 {
 }
 
 .member{
-    font-size: 12pt;
-    clear: both;
-    color:brown;
-    display: block;
-    margin-bottom: 0;
-    left: 15px;
-    position: relative;
-    padding-bottom: 5px;
 }
 .member .abbr {
     cursor: pointer;
 }
 .member-meaning{
+    border: 1px solid red;
     font-size: 12pt;
     clear: both;
     color:brown;
@@ -576,35 +607,76 @@ h1 {
     display: block;
     margin-top: 15px;
 }
-.searchingWord {
-    font-size: 21pt;
-    clear: both;
-    display: block;
-    margin-bottom: 10px;
-    left: 15px;
-    position: relative;
-    letter-spacing: 1px;
+
+.searchingFlex {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 20px;
 }
+
+.member_what {
+    text-transform: uppercase;
+    color: #019303;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+}
+
 .searchingWord h1 {
     padding: 0;
     text-align: left;
+    text-transform: uppercase;
 }
 .word_description {
-    padding-left: 30px;
+    padding: 0;
+    margin: 0;
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 76px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    
 }
 .accent {
-    color: #ea1414;
+    color: #019303;
 }
 .search_word {
     padding-bottom: 15px;: 15px;
 }
+
+.examples_view {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
 .examples_view, .idioma {
-    margin-left: 15px;
+    /* margin-left: 15px;
     padding-left: 30px;
-    margin-bottom: 15px;
+    margin-bottom: 15px; */
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 .idioma {
     margin-top: 30px;
+}
+
+.example_div {
 }
 
 .russian_example {
@@ -769,7 +841,7 @@ label[for="raz"]::after {
 ----------------------*/
 .content-body .nav-tabs {
     border: none;
-    border-bottom: 3px solid #d5d5d5;
+    /* border-bottom: 3px solid #d5d5d5; */
     padding: 15px 4%;
 }
 .content-body .nav-tabs li {
@@ -781,6 +853,7 @@ label[for="raz"]::after {
     position: relative;
     font-size: 18px;
     color: #000000;
+    text-transform: uppercase;
 }
 .content-body .nav-tabs li a:active,
 .content-body .nav-tabs li a:hover,
@@ -789,12 +862,12 @@ label[for="raz"]::after {
     background: none;
 }
 .content-body .nav-tabs li a:hover {
-    color: #008001;
+    color: #25C542;
 }
 .content-body .nav-tabs li.active a {
-    color: #008001;
+    color: #25C542;
 }
-.content-body .nav-tabs li.active a::after {
+/* .content-body .nav-tabs li.active a::after {
     content: "";
     position: absolute;
     bottom: 0;
@@ -805,7 +878,7 @@ label[for="raz"]::after {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
-}
+} */
 
 @media all and (max-width: 800px) {
     .content-body .nav-tabs li {

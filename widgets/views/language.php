@@ -16,7 +16,7 @@ $other_lang_name = ($other_lang->id == 1) ? 'РУС' : 'ТАТ';
 
 <div class="container-fluid">
     <div class="row">
-        <div class="lang-block pull-right">
+        <div class="lang-block">
             <div class="col-xs-12">
                 <button 
                     class="lang-toggle <?= $current_lang->id == 1 ? 'lang-rus' : 'lang-tat' ?>" 

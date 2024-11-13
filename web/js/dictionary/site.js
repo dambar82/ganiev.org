@@ -161,15 +161,3 @@ $body = $('body');
             }
         });
 
-
-        $('#canvas').on(
-        {
-            focus: function() {
-                $('.wrap').append('<div class="search-bg"></div>');
-            }, blur: function() {
-                $('.search-bg').remove();
-            }
-        }, '.search_form .form-control');
-        $('.content-body').ajaxSuccess(function() {
-            $('.search-bg').remove();
-        });

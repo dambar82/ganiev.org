@@ -66,9 +66,6 @@ $url = Yii::$app->urlManager->createUrl('/search', array('lang_id'=>Lang::getCur
                     }
                     ?>
                     <div class="words">
-                        <div class="searchingWord">
-                            <h1> <?= $word_result .' '.$word['word']->ending?></h1>
-                        </div>
                         <div class="word">
                             <?php
                                 $memeber = '';
@@ -83,8 +80,12 @@ $url = Yii::$app->urlManager->createUrl('/search', array('lang_id'=>Lang::getCur
                                     }
                                 }
                             ?>
-
-                            <div class="member"><?= $memeber ?></div>
+                            <div class='searchingFlex'>
+                                <div class="searchingWord">
+                                <h1> <?= $word_result .' '.$word['word']->ending?></h1>
+                                </div>
+                                <div class="member"><?= $memeber ?></div>
+                            </div>
 
                             <?php
                             $mean_all_count = false;
@@ -115,9 +116,9 @@ $url = Yii::$app->urlManager->createUrl('/search', array('lang_id'=>Lang::getCur
                                 <div class="hidden audio-src" data-src="<?=Yii::getAlias('@web/files/audio').'/'.$meaning->audio_id; ?>"></div>
                                 <div class="word_description">
                                     <?php
-                                    $number = ($mean_all_count) ? ($meaning_count + 1 + count($word['links'])).'. ' : '';
+                                    // $number = ($mean_all_count) ? ($meaning_count + 1 + count($word['links'])).'. ' : '';
                                     $italic = ($meaning->italic) ? '<div class="member-meaning">'.$meaning->italic.'</div>' : '';
-                                    $description = ($meaning->russian_description) ? '<div class="description-meaning">'.$meaning->russian_description.'</div>' : '';
+                                    // $description = ($meaning->russian_description) ? '<div class="description-meaning">'.$meaning->russian_description.'</div>' : '';
                                     ?>
 
                                     <?= $number?>
@@ -135,7 +136,7 @@ $url = Yii::$app->urlManager->createUrl('/search', array('lang_id'=>Lang::getCur
                                         }
                                         ?>
 
-                                    <span class="member" style="padding-right: 15px; display: inline-block; margin-left: -15px;"><?= $memeber ?></span>
+                                    <span class="member_what">[<?= $memeber ?>]</span>
                                         <?php
                                     }
                                     ?>
@@ -150,13 +151,17 @@ $url = Yii::$app->urlManager->createUrl('/search', array('lang_id'=>Lang::getCur
                                     <div class="examples_view">
                                         <?php foreach ($word['examples'][$meaning_count] as $example) :?>
                                             <?php if ($example->type == 0) : ?>
-                                                <span class="russian_example"> <?= $example->rus_value ?> </span> &ndash;
-                                                <span class="english_example"> <?= $example->tat_value ?> </span>
-                                                <br/>
+                                                <div class="example_div">
+                                                    <span class="russian_example"> <?= $example->rus_value ?> </span> &ndash;
+                                                    <span class="english_example"> <?= $example->tat_value ?> </span>
+                                                </div>
                                              <?php else :?>
                                                 <?php
-                                                $idioma.='<span class="russian_example">'.$example->rus_value.'</span> &ndash;
-                                                        <span class="english_example"> '.$example->tat_value.'</span>
+                                                $idioma.='
+                                                <div class="example_div">
+                                                    <span class="russian_example">'.$example->rus_value.'</span> &ndash;
+                                                    <span class="english_example"> '.$example->tat_value.'</span>
+                                                </div>
                                                 <br/>';
                                                 ?>
                                             <?php endif;?>
@@ -391,35 +396,6 @@ $url = Yii::$app->urlManager->createUrl('/search', array('lang_id'=>Lang::getCur
             </div>
         </div>
     <?php endif;?>
-
-    <div class="views-advant">
-        <div class="views-content">
-            <div class="views-row color-1 wow slideInRight" data-wow-duration="1.5s">
-                <div class="advant-numb">
-                    <span class="field-content">1</span>
-                </div>
-                <div class="advant-title">
-                    <span class="field-content"><?=Yii::t('app','Первый озвученный русско-татарский онлайн-словарь')?></span>
-                </div>
-            </div>
-            <div class="views-row color-2 wow slideInRight" data-wow-duration="1.5s">
-                <div class="advant-numb">
-                    <span class="field-content">2</span>
-                </div>
-                <div class="advant-title">
-                    <span class="field-content"><?=Yii::t('app','Содержит более 30 000 слов современного русского языка')?></span>
-                </div>
-            </div>
-            <div class="views-row color-3 wow slideInRight" data-wow-duration="1.5s">
-                <div class="advant-numb">
-                    <span class="field-content">3</span>
-                </div>
-                <div class="advant-title">
-                    <span class="field-content"><?=Yii::t('app','Слова  озвучены профессиональным диктором')?></span>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="block-text">
         <?php if ($langs->url == 'ru') {

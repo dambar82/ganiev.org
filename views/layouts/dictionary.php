@@ -23,6 +23,17 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
+<?php
+$currentController = Yii::$app->controller->id;
+$currentAction = Yii::$app->controller->action->id;
+?>
+<div class="fixed-menu">
+    <ul>
+        <li><a href="/" class="<?= $currentController == 'default' && $currentAction == 'index' ? 'fixed-menu_active' : '' ?>">Словарь</a></li>
+        <li><a href="/author" class="<?= $currentController == 'default' && $currentAction == 'author' ? 'fixed-menu_active' : '' ?>">Об Авторе</a></li>
+        <li><a href="/about" class="<?= $currentController == 'default' && $currentAction == 'about' ? 'fixed-menu_active' : '' ?>">О проекте</a></li>
+    </ul>
+</div>
 
 <div class="wrap">
     <div class='header container-fluid'>
