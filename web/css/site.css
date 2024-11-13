@@ -613,6 +613,7 @@ h1 {
     justify-content: flex-start;
     align-items: center;
     column-gap: 20px;
+    margin-bottom: 20px;
 }
 
 .member_what {
@@ -633,6 +634,7 @@ h1 {
     text-transform: uppercase;
 }
 .word_description {
+    text-transform: uppercase;
     padding: 0;
     margin: 0;
     font-size: 64px;
@@ -674,6 +676,17 @@ h1 {
 }
 .idioma {
     margin-top: 30px;
+}
+
+.idioma h4 {
+    margin-bottom: 30px;
+    font-size: 32px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 38px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
 }
 
 .example_div {
