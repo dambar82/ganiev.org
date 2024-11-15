@@ -16,9 +16,6 @@ $url = Yii::$app->urlManager->createUrl('/search', array('lang_id'=>Lang::getCur
 <div id="canvas">
 
     <div id="search_block">
-        <div class="rutt-slovar">
-            <span><?=Yii::t('app','Русско-татарский словарь тат')?></span>
-        </div>
         <div id='search_header'>
             <h3>
                 ОЗВУЧЕННЫЙ
