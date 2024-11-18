@@ -13,6 +13,25 @@ $abbr = ArrayHelper::map(DictAbbr::find()->all(),'abbr','title');
 $langs = Lang::getCurrent();
 $url = Yii::$app->urlManager->createUrl('/search', array('lang_id'=>Lang::getCurrent()->id));
 ?>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const playButtons = document.querySelectorAll('.play-audio');
+
+    playButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const audioSrc = button.getAttribute('data-src');
+            if (audioSrc) {
+                const audio = new Audio(audioSrc);
+                audio.play();
+            } else {
+                console.error('Аудиофайл не найден');
+            }
+        });
+    });
+});
+</script>    
+
 <div id="canvas">
 
     <div id="search_block">
@@ -121,7 +140,7 @@ $url = Yii::$app->urlManager->createUrl('/search', array('lang_id'=>Lang::getCur
                             <?php $idioma = ''; ?>
 
                             <?php foreach ($word['meaning'] as $meaning_count => $meaning): ?>
-                                <div class="hidden audio-src" data-src="<?=Yii::getAlias('@web/files/audio').'/'.$meaning->audio_id; ?>"></div>
+                                <!-- <div class="hidden audio-src" data-src=""></div> -->
                                 <div class="word_description">
                                     <?php
                                     // $number = ($mean_all_count) ? ($meaning_count + 1 + count($word['links'])).'. ' : '';
@@ -130,7 +149,14 @@ $url = Yii::$app->urlManager->createUrl('/search', array('lang_id'=>Lang::getCur
                                     ?>
 
                                     <?= $number?>
-
+                                    <?php if (!empty($meaning->audio_id)): ?>
+                                        <button 
+                                            class="play-audio" 
+                                            data-src="<?= Yii::getAlias('@web/files/audio') . '/' . $meaning->audio_id; ?>"
+                                        >
+                                            Озвучить перевод
+                                        </button>
+                                    <?php endif; ?>
                                     <?php
                                     $memeber = '';
                                     if (!empty($italic)) {

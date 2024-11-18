@@ -1384,12 +1384,8 @@ label[for="raz"]::after {
 }
 
 @media screen and (max-width: 768px) {
-    .views-row {
-        flex: 0 0 calc(80%);
-    }
-
-    .slider {
-        gap: 15px;
+        .slider {
+        gap: 30px;
     }
 }
 
