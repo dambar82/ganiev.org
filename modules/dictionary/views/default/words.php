@@ -35,17 +35,6 @@ $url = Yii::$app->urlManager->createUrl('/search', array('lang_id'=>Lang::getCur
 <div id="canvas">
 
     <div id="search_block">
-        <div id='search_header'>
-            <h3>
-                ОЗВУЧЕННЫЙ
-            </h3>
-            <h1>
-            Русско-Татарский словарь
-            </h1>
-            <h1>
-            Ганиева Ф.А
-            </h1>
-        </div>
         <div class="search_pol">
             <?= Html::beginForm($url, 'post', ['class' => 'search_form']); ?>
 
@@ -148,15 +137,6 @@ $url = Yii::$app->urlManager->createUrl('/search', array('lang_id'=>Lang::getCur
                                     // $description = ($meaning->russian_description) ? '<div class="description-meaning">'.$meaning->russian_description.'</div>' : '';
                                     ?>
 
-                                    <?= $number?>
-                                    <?php if (!empty($meaning->audio_id)): ?>
-                                        <button 
-                                            class="play-audio" 
-                                            data-src="<?= Yii::getAlias('@web/files/audio') . '/' . $meaning->audio_id; ?>"
-                                        >
-                                            Озвучить перевод
-                                        </button>
-                                    <?php endif; ?>
                                     <?php
                                     $memeber = '';
                                     if (!empty($italic)) {
@@ -174,9 +154,17 @@ $url = Yii::$app->urlManager->createUrl('/search', array('lang_id'=>Lang::getCur
                                         <?php
                                     }
                                     ?>
-
-                                    <?= $description?>
-                                    <?= $meaning->description?>
+                                    <div class='word_flex'>
+                                        <?= $meaning->description?>
+                                        <?php if (!empty($meaning->audio_id)): ?>
+                                            <button 
+                                                class="play-audio" 
+                                                data-src="<?= Yii::getAlias('@web/files/audio') . '/' . $meaning->audio_id; ?>"
+                                            >
+                                            <img src="/img/listen.svg" alt="">
+                                            </button>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
 
                                 <!-- примеры-->
@@ -211,10 +199,6 @@ $url = Yii::$app->urlManager->createUrl('/search', array('lang_id'=>Lang::getCur
                                     <?=$idioma?>
                                 </div>
                             <?php endif;?>
-
-                            <?php if (count($word['meaning']) > 0) : ?>
-                                <div class="img_but all_play"><?=Yii::t('app','озвучить перевод')?></div>
-                            <?php endif; ?>
                         </div>
                     </div>
                 </div>

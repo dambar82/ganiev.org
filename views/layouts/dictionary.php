@@ -41,12 +41,33 @@ $currentAction = Yii::$app->controller->action->id;
             <a href="/">
                 <img src="/img/logoTat.png" alt="">
             </a>
+            <div id='search_header'>
+            <h3>
+                ОЗВУЧЕННЫЙ
+            </h3>
+            <h1>
+            Русско-Татарский словарь
+            </h1>
+            <h1>
+            Ганиева Ф.А
+            </h1>
+        </div>
             <div class="head-lang">
                 <?=\app\widgets\Language::widget()?>
             </div>
         </div>
     </div>
-
+    <div class='search_header'>
+            <h3>
+                ОЗВУЧЕННЫЙ
+            </h3>
+            <h1>
+            Русско-Татарский словарь
+            </h1>
+            <h1>
+            Ганиева Ф.А
+            </h1>
+        </div>
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12">

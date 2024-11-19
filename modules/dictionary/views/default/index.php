@@ -8,20 +8,14 @@ $this->params['main'] = 'active';
 
 $url = Yii::$app->urlManager->createUrl('/dictionary/default/search', array('lang_id'=>Lang::getCurrent()->id));
 ?>
+<script>
+    document.querySelector('.search_but_mobile').addEventListener('click', function () {
+    document.querySelector('.search_form').submit();
+});
+</script>
 <div id="canvas">
 
     <div id="search_block">
-        <div id='search_header'>
-            <h3>
-                ОЗВУЧЕННЫЙ
-            </h3>
-            <h1>
-            Русско-Татарский словарь
-            </h1>
-            <h1>
-            Ганиева Ф.А
-            </h1>
-        </div>
         <div class="search_pol">
             <?= Html::beginForm($url, 'post', ['class' => 'search_form']); ?>
 
@@ -47,6 +41,7 @@ $url = Yii::$app->urlManager->createUrl('/dictionary/default/search', array('lan
             <?= Html::submitButton(Yii::t('app','Перевести'), ['class' => 'search_but', 'name' => 'hash-button']) ?>
             <?= Html::endForm() ?>
         </div>
+        <?= Html::submitButton(Yii::t('app','Перевести'), ['class' => 'search_but_mobile', 'name' => 'hash-button']) ?>
     </div>
     <div class='main_content'>
         <div class='middle'>
