@@ -7,32 +7,46 @@ $this->params['autho'] = 'active';
 $langs = Lang::getCurrent();
 ?>
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const slider = document.querySelector(".slider");
-    const slides = document.querySelectorAll(".views-row");
+    const slides = Array.from(document.querySelectorAll(".views-row"));
     let activeIndex = 0;
 
     const updateSlider = (index) => {
         activeIndex = index;
-        slides.forEach((slide, i) => {
+
+        // Перемещаем все прошедшие элементы в конец
+        for (let i = 0; i < activeIndex; i++) {
+            const slide = slider.firstElementChild;
+            slider.appendChild(slide);
+        }
+
+        // Сбрасываем activeIndex и обновляем классы
+        activeIndex = 0;
+        const updatedSlides = Array.from(slider.children);
+        updatedSlides.forEach((slide, i) => {
             slide.classList.remove("active", "next");
-            if (i === index) {
+            if (i === 0) {
                 slide.classList.add("active");
-            } else if (i === index + 1) {
+            } else if (i === 1) {
                 slide.classList.add("next");
             }
         });
-        const offset = -slides[index].offsetLeft + 5;
+
+        // Смещаем слайдер на первый элемент
+        const offset = -updatedSlides[0].offsetLeft + 5;
         slider.style.transform = `translateX(${offset}px)`;
     };
 
+    // Обработчики кликов
     slides.forEach((slide, index) => {
         slide.addEventListener("click", () => {
             updateSlider(index);
         });
     });
 
-    updateSlider(activeIndex); // Инициализация слайдера
+    // Инициализация слайдера
+    updateSlider(activeIndex);
 });
 
 document.querySelectorAll('.field-content').forEach((content) => {
