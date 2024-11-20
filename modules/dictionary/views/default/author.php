@@ -9,45 +9,42 @@ $langs = Lang::getCurrent();
 <script>
 document.addEventListener("DOMContentLoaded", () => {
     const slider = document.querySelector(".slider");
-    const slides = Array.from(document.querySelectorAll(".views-row"));
+    const slides = document.querySelectorAll(".views-row");
+
     let activeIndex = 0;
 
     const updateSlider = (index) => {
         activeIndex = index;
 
-        // Перемещаем все прошедшие элементы в конец
-        for (let i = 0; i < activeIndex; i++) {
-            const slide = slider.firstElementChild;
-            slider.appendChild(slide);
-        }
+        slides.forEach((slide, i) => {
+            // Сбрасываем классы
+            slide.classList.remove("active", "next", "previous");
 
-        // Сбрасываем activeIndex и обновляем классы
-        activeIndex = 0;
-        const updatedSlides = Array.from(slider.children);
-        updatedSlides.forEach((slide, i) => {
-            slide.classList.remove("active", "next");
-            if (i === 0) {
+            if (i === index) {
                 slide.classList.add("active");
-            } else if (i === 1) {
+
+                // Добавляем "готовность" для `::before` после анимации
+            } else if (i === index + 1) {
                 slide.classList.add("next");
+            } else if (i === index - 1) {
+                slide.classList.add("previous");
             }
         });
 
-        // Смещаем слайдер на первый элемент
-        const offset = -updatedSlides[0].offsetLeft + 5;
+        const offset = -slides[index].offsetLeft + 5;
+        slider.style.transition = "transform 0.3s ease";
         slider.style.transform = `translateX(${offset}px)`;
     };
 
-    // Обработчики кликов
     slides.forEach((slide, index) => {
         slide.addEventListener("click", () => {
             updateSlider(index);
         });
     });
 
-    // Инициализация слайдера
-    updateSlider(activeIndex);
+    updateSlider(activeIndex); // Инициализация слайдера
 });
+
 
 document.querySelectorAll('.field-content').forEach((content) => {
     const lineHeight = parseFloat(getComputedStyle(content).lineHeight); // Высота строки

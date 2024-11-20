@@ -895,7 +895,7 @@ h1 {
     color: #019303;
 }
 .search_word {
-    padding-bottom: 15px;: 15px;
+    padding-bottom: 15px;
 }
 
 .examples_view {
@@ -1070,6 +1070,10 @@ label[for="raz"]::after {
 @media screen and (max-width: 1440px) {
     label[for="raz"] {
         width: 264px;
+    }
+
+    .views-row.previous {
+        transform: translate(160px, 100px) !important;
     }
 }
 
@@ -1284,7 +1288,6 @@ label[for="raz"]::after {
 
 
 .slider-wrapper {
-    overflow: hidden;
     position: relative;
     width: 100%;
     height: 800px;
@@ -1295,49 +1298,57 @@ label[for="raz"]::after {
     align-items: center;
     gap: 60px; /* Расстояние между элементами */
     transform: translateX(0);
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
+    position: relative;
 }
 
 .views-row {
     flex: 0 0 calc(60%); /* Активный элемент занимает почти всю ширину */
     border: 4px solid #1D351E;
     border-radius: 20px;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.5s ease, scale 0.5s ease, transform 0.5s ease;
     background-color: white;
-    max-height: 600px;
+    height: 670px;
+    max-height: 670px;
     overflow: hidden;
 }
 
 .views-row.active {
     overflow: visible;
     position: relative;
-    border: 1px solid transparent;
+    border: 4px solid #25C543;
     border-radius: 20px;
-    height: 670px;
-    max-height: 670px;
+    /* height: 670px;
+    max-height: 670px; */
     margin-top: 4px;
+}
+
+.views-row.previous {
+    margin-top: auto;
+    margin-left: auto;
+    transform: translate(220px, 150px);
+    scale: 0.7;
 }
 
 .views-about-author .about-author-title {
     margin-left: auto;
 }
 
-.views-row.active::before {
+/* .views-row.active::before {
     content: "";
     position: absolute;
     top: -4px; /* Отступ для псевдоэлемента, чтобы разместить его за границами */
-    left: -4px;
+ /*   left: -4px; 
     right: -4px;
     bottom: -4px;
     border-radius: 20px; /* Закругленные углы */
-    background: linear-gradient(180deg, #25C543 0%, #00AEFF 100%);
-    z-index: -1; /* Размещение позади основного элемента */
-}
+  /*   background: linear-gradient(180deg, #25C543 0%, #00AEFF 100%); */
+ /*    z-index: -1; /* Размещение позади основного элемента */
 
 .views-row.next {
     flex: 0 0 calc(50%); /* Следующий элемент виден частично */
     opacity: 0.6;
-    transform: scale(0.9); /* Уменьшенный размер */
+    /* transform: scale(0.9); Уменьшенный размер */
 }
 
 .views-row .about-author-text {
@@ -1460,6 +1471,10 @@ label[for="raz"]::after {
 @media screen and (max-width: 1024px) {
     .views-row {
         flex: 0 0 calc(70%);
+    }
+
+    .views-row.previous {
+        transform: translate(0, 0) !important;
     }
 }
 
