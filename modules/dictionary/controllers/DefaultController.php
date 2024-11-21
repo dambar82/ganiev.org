@@ -11,7 +11,9 @@ use app\backend\models\InfoAboutAuthor;
 use app\backend\models\Quotations;
 use app\helpers\admin\AdminHelper;
 use app\models\Lang;
+use app\models\Photo;
 use app\models\Seo;
+use app\models\Video;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -88,7 +90,9 @@ class DefaultController extends Controller
         return $this->render('author',[
             'model' => $model,
             'comments' => InfoAboutAuthor::find()->all(),
-            'nasledie' => (Info::findOne(['id' => 3]) ? Info::findOne(['id' => 3]) : new Info())
+            'nasledie' => (Info::findOne(['id' => 3]) ? Info::findOne(['id' => 3]) : new Info()),
+            'photos' => Photo::find()->all(),
+            'videos' => Video::find()->all()
         ]);
     }
 

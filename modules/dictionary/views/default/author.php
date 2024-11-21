@@ -81,7 +81,7 @@ document.querySelectorAll('.field-content').forEach((content) => {
             <div class="main-content">
                 <!-- <?php if ($model->image_id) : ?> -->
                     <!-- <div class="author-content">
-                        <img class="img-thumbnail img-responsive" src="<?=Yii::getAlias('@web/files/').$model->image_id ?>">
+                        <img class="img-thumbnail img-responsive" src="<?= author . Yii::getAlias('@web/files/') . $model->image_id ?>">
                     </div> -->
                 <!-- <?php endif;?> -->
                 <div class="main-text">
@@ -128,6 +128,11 @@ document.querySelectorAll('.field-content').forEach((content) => {
         <div class="block-author">
             <div class="main-content">
                 <div class="main-text">
+                    <?php if (is_array($photos) && count($photos) > 0): ?>
+                        <?php foreach ($photos as $photo): ?>
+                            <img src="http://ganiev/source/photos/<?= $photo['photo'] ?>" alt="Фото">
+                        <?php endforeach; ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -137,6 +142,18 @@ document.querySelectorAll('.field-content').forEach((content) => {
         <div class="block-author">
             <div class="main-content">
                 <div class="main-text">
+                    <?php if (is_array($videos) && count($videos) > 0): ?>
+                        <div class="video-container">
+                            <?php foreach ($videos as $video): ?>
+                                <video controls>
+                                    <source src="http://ganiev/source/videos/<?= htmlspecialchars($video['video'], ENT_QUOTES) ?>" type="video/mp4">
+                                    Ваш браузер не поддерживает видео тег.
+                                </video>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php else: ?>
+                        <p>Видео отсутствуют.</p>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
