@@ -65,6 +65,8 @@ document.querySelectorAll('.field-content').forEach((content) => {
   <li class="active"><a href="#author-first" data-toggle="tab"><?=Yii::t('app','Биография')?></a></li>
   <li><a href="#author-second" data-toggle="tab"><?=Yii::t('app','Коллеги о Ф.А. Ганиеве')?></a></li>
   <li><a href="#author-third" data-toggle="tab"><?=Yii::t('app','Научное наследие')?></a></li>
+  <li><a href="#author-fourth" data-toggle="tab"><?=Yii::t('app','Фото')?></a></li>
+  <li><a href="#author-fifth" data-toggle="tab"><?=Yii::t('app','Видео')?></a></li>
 </ul>
 <div class="tab-content">
     <div class="tab-pane active" id="author-first">
@@ -117,6 +119,24 @@ document.querySelectorAll('.field-content').forEach((content) => {
             <div class="main-content">
                 <div class="main-text">
                     <?= ($langs->id == 2 ? $nasledie->content : $nasledie->content_tat) ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane" id="author-fourth">
+        <div class='tabName'><?=Yii::t('app','Фото')?></div>
+        <div class="block-author">
+            <div class="main-content">
+                <div class="main-text">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane" id="author-fifth">
+        <div class='tabName'><?=Yii::t('app','Видео')?></div>
+        <div class="block-author">
+            <div class="main-content">
+                <div class="main-text">
                 </div>
             </div>
         </div>
