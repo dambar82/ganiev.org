@@ -77,18 +77,8 @@ document.querySelectorAll('.field-content').forEach((content) => {
                     <img src="/img/muzhik.png" alt="">
                </div>
                 <h2 class="tab-title"><?=Yii::t('app','Ганиев Фуат Ашрафович')?></h2>
-            </div>
-            <div class="main-content">
-                <!-- <?php if ($model->image_id) : ?> -->
-                    <!-- <div class="author-content">
-                        <img class="img-thumbnail img-responsive" src="<?= author . Yii::getAlias('@web/files/') . $model->image_id ?>">
-                    </div> -->
-                <!-- <?php endif;?> -->
-                <div class="main-text">
-                    <?= ($langs->id == 2 ? $model->content : $model->content_tat) ?>
-                </div>
-            </div>
-        </div>
+            </div>   
+	</div>
     </div>
     <div class="tab-pane" id="author-second">
       <div class='tabName'><?=Yii::t('app','Коллеги о Ф.А. Ганиеве')?></div>
@@ -130,7 +120,7 @@ document.querySelectorAll('.field-content').forEach((content) => {
                 <div class="main-text">
                     <?php if (is_array($photos) && count($photos) > 0): ?>
                         <?php foreach ($photos as $photo): ?>
-                            <img src="http://ganiev/source/photos/<?= $photo['photo'] ?>" alt="Фото">
+                            <img src="http://ganiev.org/source/photos/<?= $photo['photo'] ?>" alt="Фото">
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
@@ -146,7 +136,7 @@ document.querySelectorAll('.field-content').forEach((content) => {
                         <div class="video-container">
                             <?php foreach ($videos as $video): ?>
                                 <video controls>
-                                    <source src="http://ganiev/source/videos/<?= htmlspecialchars($video['video'], ENT_QUOTES) ?>" type="video/mp4">
+                                    <source src="http://ganiev.org/source/videos/<?= htmlspecialchars($video['video'], ENT_QUOTES) ?>" type="video/mp4">
                                     Ваш браузер не поддерживает видео тег.
                                 </video>
                             <?php endforeach; ?>
