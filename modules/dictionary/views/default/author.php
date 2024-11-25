@@ -114,13 +114,13 @@ document.querySelectorAll('.field-content').forEach((content) => {
         </div>
     </div>
     <div class="tab-pane" id="author-fourth">
-        <div class='tabName'><?=Yii::t('app','Фото')?></div>
+        <div class='tabName'><?= Yii::t('app', 'Фото') ?></div>
         <div class="block-author">
             <div class="main-content">
                 <div class="main-text">
                     <?php if (is_array($photos) && count($photos) > 0): ?>
                         <?php foreach ($photos as $photo): ?>
-                            <img src="http://ganiev.org/source/photos/<?= $photo['photo'] ?>" alt="Фото">
+                            <img src="http://ganiev.org/<?= $photo['photo'] ?>" alt="Фото">
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
@@ -136,7 +136,7 @@ document.querySelectorAll('.field-content').forEach((content) => {
                         <div class="video-container">
                             <?php foreach ($videos as $video): ?>
                                 <video controls>
-                                    <source src="http://ganiev.org/source/videos/<?= htmlspecialchars($video['video'], ENT_QUOTES) ?>" type="video/mp4">
+                                    <source src="http://ganiev.org/<?= htmlspecialchars($video['video'], ENT_QUOTES) ?>" type="video/mp4">
                                     Ваш браузер не поддерживает видео тег.
                                 </video>
                             <?php endforeach; ?>

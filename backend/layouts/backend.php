@@ -43,6 +43,7 @@ BackendAsset::register($this);
             ['label' => 'Об авторе', 'url' => ['/backend/info-about-author/index']],
             ['label' => 'Редактирование', 'url' => ['/backend/dict-word']],
             ['label' => 'Роли', 'url' => ['/backend/default/index']],
+            ['label' => 'Фото', 'url' => ['/backend/photos/index']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (

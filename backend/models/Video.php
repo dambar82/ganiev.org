@@ -1,23 +1,23 @@
 <?php
 
-namespace app\models;
-
-use Yii;
+namespace app\backend\models;
 
 /**
- * This is the model class for table "photos".
+ * This is the model class for table "videos".
  *
  * @property int $id
- * @property string $photo
+ * @property string $video
  */
-class Photo extends \yii\db\ActiveRecord
+class Video extends \yii\db\ActiveRecord
 {
+    public $image;
+
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'photos';
+        return 'videos';
     }
 
     /**
@@ -26,7 +26,7 @@ class Photo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['photo'], 'string', 'max' => 255],
+            [['video'], 'string', 'max' => 255],
         ];
     }
 
@@ -37,7 +37,7 @@ class Photo extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'photo' => 'Photo',
+            'video' => 'Video',
         ];
     }
 }
