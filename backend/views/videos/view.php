@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model app\backend\models\Video */
@@ -8,7 +9,7 @@ use yii\helpers\Html;
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Video', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-$videoUrl = 'http://ganiev.org/' . htmlspecialchars($model->video, ENT_QUOTES);
+$videoUrl = Url::to('@web/' . $model->video) ;
 ?>
 <div class="videos-view">
 

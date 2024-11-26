@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -33,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'photo',
                 'format' => 'html',
                 'value' => function($model) {
-                    $imageUrl = 'http://ganiev.org/' . $model->photo;
+                    $imageUrl = Url::to('@web/' . $model->photo);
                     return Html::img($imageUrl, ['alt' => 'Photo', 'style' => 'width:300px; height:auto;']);
                 },
             ],
