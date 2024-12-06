@@ -13,7 +13,7 @@
                     [
                         'label' => 'Об авторе',
                         'icon' => 'info-circle',
-                        'url' => '/author',
+                        'url' => '/backend/info-about-author/index',
                         'items' => [
                             ['label' => 'Биография', 'icon' => 'male', 'url' => ['/backend/info/update?id=1'],],
                             ['label' => 'Наследие', 'icon' => 'book', 'url' => ['/backend/info/update?id=3'],],
