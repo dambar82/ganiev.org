@@ -184,6 +184,7 @@ h1 {
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: 1fr;
     gap: 20px;
 }
 
@@ -202,12 +203,26 @@ h1 {
 .photo-container {
     border-radius: 20px;
     overflow: hidden;
+    max-height: 340px;
+    height: 100%;
 }
 
 .photo-container img {
     object-fit: cover;
     width: 100%;
     height: 100%;
+}
+
+@media screen and (max-width: 1440px) {
+    .photo-container {
+        max-height: 240px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .photo-container {
+        max-height: 220px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -233,6 +248,7 @@ h1 {
 }
 
 .main-content {
+   padding-top: 40px;
 }
 
 .main-content .author-content {
@@ -249,16 +265,6 @@ h1 {
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
     color: #20304E;
-	display: flex;
-    flex-wrap: nowrap;
-    flex-direction: column;
-}
-.main-text img {
-    vertical-align: middle;
-    width: fit-content;
-    /* height: auto; */
-    max-height: 800px;
-    padding: 25px 0;
 }
 
 .main-content .main-text ol {

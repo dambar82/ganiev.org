@@ -98,6 +98,16 @@ document.querySelectorAll('.field-content').forEach((content) => {
                </div>
                 <h2 class="tab-title"><?=Yii::t('app','Ганиев Фуат Ашрафович')?></h2>
             </div>   
+            <div class="main-content">
+                <!-- <?php if ($model->image_id) : ?> -->
+                    <!-- <div class="author-content">
+                        <img class="img-thumbnail img-responsive" src="<?=Yii::getAlias('@web/files/').$model->image_id ?>">
+                    </div> -->
+                <!-- <?php endif;?> -->
+                <div class="main-text">
+                    <?= ($langs->id == 2 ? $model->content : $model->content_tat) ?>
+                </div>
+            </div> 
 	</div>
     </div>
     <div class="tab-pane" id="author-second">
@@ -133,18 +143,20 @@ document.querySelectorAll('.field-content').forEach((content) => {
             </div>
         </div>
     </div>
-    <div class="tab-pane" id="author-fourth">
+    <div class="tab-pane" style='flex-direction: column; row-gap: 32px;' id="author-fourth">
         <div class='tabName'><?=Yii::t('app','Фото')?></div>
-        <div class="block-author">
             <div class="main-content">
-                <div class="main-text">
+                <div class="grid">
                     <?php if (is_array($photos) && count($photos) > 0): ?>
                         <?php foreach ($photos as $photo): ?>
-                            <img src="<?= Url::to('@web/' . $photo['photo']) ?>" alt="Фото">
+                           <a href="<?= Url::to('@web/' . $photo['photo']) ?>" data-fancybox="gallery">
+                               <div class='photo-container'>
+                                  <img src="<?= Url::to('@web/' . $photo['photo']) ?>" alt="Фото">
+                               </div>
+                           </a>
                         <?php endforeach; ?>
                     <?php endif; ?>
                 </div>
-            </div>
         </div>
     </div>
     <div class="tab-pane" id="author-fifth">
