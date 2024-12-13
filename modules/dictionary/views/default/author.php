@@ -9,41 +9,34 @@ $langs = Lang::getCurrent();
 ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
-<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 <script>
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
     const grid = document.querySelector('.grid');
-    if (grid) {
-        const masonry = new Masonry(grid, {
-            itemSelector: '.grid-item',
-            columnWidth: '.grid-item',
-            percentPosition: true,
-            gutter: 16
+    const gridItems = document.querySelectorAll('.photo-container');
+
+    const updateGridItems = () => {
+        const rowHeight = parseInt(window.getComputedStyle(grid).getPropertyValue('grid-auto-rows'));
+        const gap = parseInt(window.getComputedStyle(grid).getPropertyValue('gap'));
+
+        gridItems.forEach(item => {
+            const img = item.querySelector('img');
+            img.onload = () => {
+                const itemHeight = img.getBoundingClientRect().height;
+                const totalHeight = itemHeight + gap; // Учитываем отступ
+                const rowSpan = Math.ceil(totalHeight / (rowHeight + gap)); // Ровное деление
+                item.style.gridRowEnd = `span ${rowSpan}`;
+                item.style.height = `${rowSpan * (rowHeight + gap) - gap}px`; // Устанавливаем точную высоту
+            };
         });
+    };
 
-        // Убедитесь, что изображения загружены перед расчётом
-        imagesLoaded(grid, () => {
-            masonry.layout();
-        });
+    updateGridItems();
 
-        // Принудительный пересчёт layout при изменении размера окна
-        window.addEventListener('resize', () => {
-            masonry.layout();
-        });
-
-        const photoTab = document.getElementById('photo-tab');
-
-        photoTab.addEventListener('click', () => {
-            console.log('clicked');
-            setTimeout(() => {
-                console.log('ONLOAD!');
-                masonry.layout();
-            }, 100);
-        })
-    }
+    // Пересчёт при изменении размеров окна
+    window.addEventListener('resize', updateGridItems);
 });
+
 
     document.addEventListener('DOMContentLoaded', () => {
     const scrollToTopButton = document.getElementById('scroll_to_top');
@@ -141,7 +134,7 @@ document.querySelectorAll('.field-content').forEach((content) => {
   <li class="active"><a href="#author-first" data-toggle="tab"><?=Yii::t('app','Биография')?></a></li>
   <li><a href="#author-second" data-toggle="tab"><?=Yii::t('app','Коллеги о Ф.А. Ганиеве')?></a></li>
   <li><a href="#author-third" data-toggle="tab"><?=Yii::t('app','Научное наследие')?></a></li>
-  <li id='photo-tab'><a href="#author-fourth" data-toggle="tab"><?=Yii::t('app','Фото')?></a></li>
+  <li><a href="#author-fourth" data-toggle="tab"><?=Yii::t('app','Фото')?></a></li>
   <?php if (!empty($videos) && is_array($videos)): ?>
     <li><a href="#author-fifth" data-toggle="tab"><?=Yii::t('app','Видео')?></a></li>
   <?php endif; ?>
@@ -211,7 +204,7 @@ document.querySelectorAll('.field-content').forEach((content) => {
                     <?php if (is_array($photos) && count($photos) > 0): ?>
                         <?php foreach ($photos as $photo): ?>
                            <a href="<?= Url::to('@web/' . $photo['photo']) ?>" data-fancybox="gallery">
-                               <div class='grid-item'>
+                               <div class='photo-container'>
                                   <img src="<?= Url::to('@web/' . $photo['photo']) ?>" alt="Фото">
                                </div>
                            </a>
