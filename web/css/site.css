@@ -1886,10 +1886,19 @@ h1 {
 }
 
 .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);     
-    gap: 20px;
+    width: 100%;
+    margin: 0 auto;
 }
+.grid-item {
+  width: 30%;
+  margin-bottom: 16px;
+}
+.grid-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 
 .photo-container {
     display: flex;
