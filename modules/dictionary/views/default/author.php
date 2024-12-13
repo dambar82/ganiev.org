@@ -9,7 +9,63 @@ $langs = Lang::getCurrent();
 ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
 <script>
+
+document.addEventListener("DOMContentLoaded", () => {
+    const grid = document.querySelector('.grid');
+    if (grid) {
+        const masonry = new Masonry(grid, {
+            itemSelector: '.grid-item',
+            columnWidth: '.grid-item',
+            percentPosition: true,
+            gutter: 16
+        });
+
+        // Убедитесь, что изображения загружены перед расчётом
+        imagesLoaded(grid, () => {
+            masonry.layout();
+        });
+
+        // Принудительный пересчёт layout при изменении размера окна
+        window.addEventListener('resize', () => {
+            masonry.layout();
+        });
+
+        const photoTab = document.getElementById('photo-tab');
+
+        photoTab.addEventListener('click', () => {
+            console.log('clicked');
+            setTimeout(() => {
+                console.log('ONLOAD!');
+                masonry.layout();
+            }, 100);
+        })
+    }
+});
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const scrollToTopButton = document.getElementById('scroll_to_top');
+    
+    // Показывать кнопку при прокрутке вниз
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) { // Если прокрутили более 300px
+            scrollToTopButton.style.display = 'flex';
+        } else {
+            scrollToTopButton.style.display = 'none';
+        }
+    });
+
+    // Прокрутка вверх при нажатии
+    scrollToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+});
+
     document.addEventListener('DOMContentLoaded', () => {
         Fancybox.bind("[data-fancybox]", {
             // Опциональные настройки
@@ -85,11 +141,16 @@ document.querySelectorAll('.field-content').forEach((content) => {
   <li class="active"><a href="#author-first" data-toggle="tab"><?=Yii::t('app','Биография')?></a></li>
   <li><a href="#author-second" data-toggle="tab"><?=Yii::t('app','Коллеги о Ф.А. Ганиеве')?></a></li>
   <li><a href="#author-third" data-toggle="tab"><?=Yii::t('app','Научное наследие')?></a></li>
-  <li><a href="#author-fourth" data-toggle="tab"><?=Yii::t('app','Фото')?></a></li>
-  <li><a href="#author-fifth" data-toggle="tab"><?=Yii::t('app','Видео')?></a></li>
+  <li id='photo-tab'><a href="#author-fourth" data-toggle="tab"><?=Yii::t('app','Фото')?></a></li>
+  <?php if (!empty($videos) && is_array($videos)): ?>
+    <li><a href="#author-fifth" data-toggle="tab"><?=Yii::t('app','Видео')?></a></li>
+  <?php endif; ?>
 </ul>
 <div class="tab-content">
     <div class="tab-pane active" id="author-first">
+        <div id='scroll_to_top'>
+            <img src="/img/arrowUp.svg" alt="">
+        </div>
         <div class='tabName'><?=Yii::t('app','Биография')?></div>
         <div class="block-author">
             <div class='title-wrapper'>
@@ -150,7 +211,7 @@ document.querySelectorAll('.field-content').forEach((content) => {
                     <?php if (is_array($photos) && count($photos) > 0): ?>
                         <?php foreach ($photos as $photo): ?>
                            <a href="<?= Url::to('@web/' . $photo['photo']) ?>" data-fancybox="gallery">
-                               <div class='photo-container'>
+                               <div class='grid-item'>
                                   <img src="<?= Url::to('@web/' . $photo['photo']) ?>" alt="Фото">
                                </div>
                            </a>

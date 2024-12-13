@@ -182,10 +182,40 @@ h1 {
 }
 
 .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-auto-rows: 1fr;
-    gap: 20px;
+    width: 100%;
+    margin: 0 auto;
+}
+.grid-item {
+  width: 30%;
+  margin-bottom: 16px;
+}
+.grid-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+.photo-container {
+    display: flex;
+    justify-content: center; /* Центровка по горизонтали */
+    align-items: center; 
+    border-radius: 20px;
+    overflow: hidden;
+    grid-row-end: span 1;
+    height: 100%;
+}
+
+.photo-container img {
+    border-radius: 20px;
+    width: auto; /* Сохраняет соотношение сторон */
+    max-width: 100%; /* Не выходит за рамки контейнера */
+    max-height: 100%; /* Не выходит за высоту контейнера */
+    display: block;
+}
+
+.photo-container {
+    grid-row-end: span calc(var(--photo-height) / 10); /* РСЃРїРѕР»СЊР·СѓРµРј CSS-РїРµСЂРµРјРµРЅРЅСѓСЋ */
 }
 
 .video-container {
@@ -200,6 +230,8 @@ h1 {
     height: 100%;
 }
 
+<<<<<<< HEAD
+=======
 .photo-container {
     border-radius: 20px;
     overflow: hidden;
@@ -213,6 +245,7 @@ h1 {
     height: 100%;
 }
 
+>>>>>>> 15eaed080c87e345bb333915aa5c913f5fc8c3f2
 @media screen and (max-width: 1440px) {
     .photo-container {
         max-height: 240px;
@@ -1032,8 +1065,28 @@ h1 {
 }
 
 .tab-pane {
+    position: relative;
     display: flex !important;
     column-gap: 6vw;
+}
+
+#scroll_to_top {
+    display: none;
+    position: fixed;
+    right: 10%;
+    top: 50%;
+    justify-content: center;
+    background-color: #019303;
+    cursor: pointer;
+    align-items: center;
+    border-radius: 50%;
+    padding: 24px;
+    z-index: 1000;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#scroll_to_top:hover {
+    background-color: #1D351E;
 }
 
 .tab-content {
