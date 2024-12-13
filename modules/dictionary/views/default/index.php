@@ -46,15 +46,15 @@ $url = Yii::$app->urlManager->createUrl('/dictionary/default/search', array('lan
     <div class='main_content'>
         <div class='middle'>
             <div class='main_contentHeader'>
-                <span>Фуат Ашрафович Ганиев —</span><br>
-                лидер в теории и практике создания словарей татарского языка!
+                <span><?php echo Yii::t('app', 'ФИО')?> —</span><br>
+                <?php echo Yii::t('app', 'Лидер')?>
             </div>
             <div class='thin'>
                <div class='thin_img'>
                     <img src="/img/muzhik.png" alt="">
                </div>
                <div class='thin_text'>
-               Ф. А. Ганиев – автор более 350 научных трудов, в том числе 24 монографий. В книге "Словообразование в татарском языке" (2010) ученый обобщил все свои изыскания в области татарского словообразования. Он создатель (в соавторстве) и научный редактор трехтомной академической грамматики татарского языка, редактор 135 научных изданий и словарей. Он внес большой вклад в изучение и систематизацию татарской лексикографии, интенсивно работал над составлением различных типов словарей татарского языка (толковых, переводных и т.д.). Созданные им труды, являясь бесценным научным капиталом и неоценимым достижением в тюркологии, ознаменовали целую эпоху в новейшей истории татарской лингвистической мысли.
+                   <?php echo Yii::t('app', 'О авторе')?>
                </div>
                <a class='thin_moreLink' href="/author">
                 <div class='thin_more'>
@@ -66,7 +66,7 @@ $url = Yii::$app->urlManager->createUrl('/dictionary/default/search', array('lan
         </div>
         <div class='quotes'>
             <div class='quote_active'>
-                <span>В словах отражено богатство языка.</span>
+                <span><?php echo Yii::t('app', 'Богатство')?></span>
                 <img src="/img/quote.svg" alt="">
             </div>
         </div>
@@ -76,8 +76,7 @@ $url = Yii::$app->urlManager->createUrl('/dictionary/default/search', array('lan
                     №1
                 </h2>
                 <div class='fact_text'>
-                Первый озвученный 
-русско-татарский онлайн-словарь
+                    <?php echo Yii::t('app', '№1')?>
                 </div>
             </div>
             <div class='fact'>
@@ -85,8 +84,7 @@ $url = Yii::$app->urlManager->createUrl('/dictionary/default/search', array('lan
                     100%
                 </h2>
                 <div class='fact_text'>
-                    Слов озвучены 
-профессиональным диктором
+                    <?php echo Yii::t('app', '100%')?>
                 </div>
             </div>
             <div class='fact'>
@@ -94,14 +92,13 @@ $url = Yii::$app->urlManager->createUrl('/dictionary/default/search', array('lan
                     30000
                 </h2>
                 <div class='fact_text'>
-                слов современного 
-русского языка
+                    <?php echo Yii::t('app', '30000')?>
                 </div>
             </div>
         </div>
         <div class='thin'>
             <div class='thin_text'>
-            Проект русско-татарского словаря Ф.А. Ганиева — это уникальная возможность для всех, кто хочет изучать татарский язык. Основанный на многолетних исследованиях выдающегося ученого, этот онлайн-словарь содержит более 30 тысяч слов и является первым авторским озвученным словарём. Словарь доступен школьникам и всем, кто стремится к углубленному изучению языка. Мы продолжаем важное дело Фуата Ашрафовича, открывая новые горизонты в области языка и культуры.
+                <?php echo Yii::t('app', 'Проект')?>
             </div>
             <a class='thin_moreLink' href="/about">
                 <div class='thin_more'>

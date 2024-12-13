@@ -43,13 +43,13 @@ $currentAction = Yii::$app->controller->action->id;
             </a>
             <div id='search_header'>
             <h3>
-                ОЗВУЧЕННЫЙ
+                <?php echo Yii::t('app', 'ОЗВУЧЕННЫЙ')?>
             </h3>
             <h1>
-            Русско-Татарский словарь
+                <?php echo Yii::t('app', 'словарь')?>
             </h1>
             <h1>
-            Ганиева Ф.А
+                <?php echo Yii::t('app', 'автор')?>
             </h1>
         </div>
             <div class="head-lang">
