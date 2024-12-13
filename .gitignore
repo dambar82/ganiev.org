@@ -33,3 +33,5 @@ tests/_support/_generated
 /config/db-local.php
 
 /node_modules
+/web/source/
+/web/img/video-fag.mp4
