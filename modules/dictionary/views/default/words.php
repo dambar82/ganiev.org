@@ -132,9 +132,9 @@ $url = Yii::$app->urlManager->createUrl('/search', array('lang_id'=>Lang::getCur
                                 <!-- <div class="hidden audio-src" data-src=""></div> -->
                                 <div class="word_description">
                                     <?php
-                                    // $number = ($mean_all_count) ? ($meaning_count + 1 + count($word['links'])).'. ' : '';
+                                    $number = ($mean_all_count) ? ($meaning_count + 1 + count($word['links'])).'. ' : '';
                                     $italic = ($meaning->italic) ? '<div class="member-meaning">'.$meaning->italic.'</div>' : '';
-                                    // $description = ($meaning->russian_description) ? '<div class="description-meaning">'.$meaning->russian_description.'</div>' : '';
+                                    $description = ($meaning->russian_description) ? '<div class="description-meaning">'.$meaning->russian_description.'</div>' : '';
                                     ?>
 
                                     <?php

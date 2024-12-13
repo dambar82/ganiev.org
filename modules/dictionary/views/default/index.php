@@ -76,7 +76,8 @@ $url = Yii::$app->urlManager->createUrl('/dictionary/default/search', array('lan
                     №1
                 </h2>
                 <div class='fact_text'>
-                Первый озвученный  русско-татарский онлайн-словарь
+                Первый озвученный 
+русско-татарский онлайн-словарь
                 </div>
             </div>
             <div class='fact'>
@@ -84,7 +85,8 @@ $url = Yii::$app->urlManager->createUrl('/dictionary/default/search', array('lan
                     100%
                 </h2>
                 <div class='fact_text'>
-                    Слов озвучены  профессиональным диктором
+                    Слов озвучены 
+профессиональным диктором
                 </div>
             </div>
             <div class='fact'>
@@ -92,7 +94,8 @@ $url = Yii::$app->urlManager->createUrl('/dictionary/default/search', array('lan
                     30000
                 </h2>
                 <div class='fact_text'>
-                слов современного  русского языка
+                слов современного 
+русского языка
                 </div>
             </div>
         </div>
