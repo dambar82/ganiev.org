@@ -214,7 +214,6 @@ $url = Yii::$app->urlManager->createUrl('/search', array('lang_id'=>Lang::getCur
         <div class="txt_block">
             <input type="checkbox" id="raz"/><label for="raz"><?=Yii::t('app','Условные сокращения')?></label>
             <div id="skryt">
-                <blockquote><p><b>Русские</b></p>
                     <div class="txt_block-content">
                         <div class="txt_block-row"><span class="field-content"><b>ав. </b> – авиация</span></div>
                         <div class="txt_block-row"><span class="field-content"><b>анат. </b> – анатомия</span></div>
