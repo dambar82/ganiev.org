@@ -117,7 +117,7 @@ class ApiController extends Controller
             $links = $word->links;
             foreach ($meanings as $meankey => $meaning) {
                 $examples = $meaning->examples;
-                /* @var $meaning \app\backend\models\DictMeaning */
+                /* @var $meaning DictMeaning */
                 $mean[$meankey]['title'] = trim($meaning->description);
                 $mean[$meankey]['description'] = trim($meaning->russian_description);
                 $mean[$meankey]['italic'] = trim($meaning->italic);
@@ -222,7 +222,7 @@ class ApiController extends Controller
             $links = $word->links;
             foreach ($meanings as $meankey => $meaning) {
                 $examples = $meaning->examples;
-                /* @var $meaning \app\backend\models\DictMeaning */
+                /* @var $meaning DictMeaning */
                 $mean[$meankey]['title'] = trim($meaning->description);
                 $mean[$meankey]['description'] = trim($meaning->russian_description);
                 $mean[$meankey]['italic'] = trim($meaning->italic);
