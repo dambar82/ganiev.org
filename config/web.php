@@ -67,6 +67,12 @@ $config = [
                 '/about' => '/dictionary/default/about',
                 '/search' => '/dictionary/default/search',
 
+                '/app' => '/dictionary/app',
+                '/app/words/<word:\w+>' => '/dictionary/app/words',
+                '/app/author' => '/dictionary/app/author',
+                '/app/about' => '/dictionary/app/about',
+                '/app/search' => '/dictionary/app/search',
+
                 '/dictionary/default/words' => '/site/error',
                 '/dictionary/default/author' => '/site/error',
                 '/dictionary/default/about' => '/site/error',
